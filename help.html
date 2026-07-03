@@ -1,0 +1,400 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft启动器help</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #ffffff;
+            background-image: url('minecraft_background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            line-height: 1.6;
+        }
+
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.6);
+            min-height: 100vh;
+            padding: 40px 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+            background-color: rgba(30, 30, 30, 0.85);
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffd700;
+            border-bottom: 2px solid #555;
+            padding-bottom: 10px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        h2 {
+            color: #87ceeb;
+            border-left: 4px solid #ffd700;
+            padding-left: 10px;
+            margin-top: 35px;
+        }
+
+        h3 {
+            color: #98fb98;
+            margin-top: 25px;
+        }
+
+        p {
+            font-size: 1.05em;
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            padding-left: 25px;
+            font-size: 1.05em;
+            line-height: 2;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        strong {
+            color: #ffcc00;
+        }
+
+        code {
+            background-color: #222;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: monospace;
+            color: #aaffaa;
+            font-size: 0.95em;
+        }
+
+        .box {
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border-left: 5px solid;
+        }
+
+        .success {
+            background-color: rgba(40, 167, 69, 0.2);
+            border-color: #28a745;
+            color: #c3e6cb;
+        }
+
+        .info {
+            background-color: rgba(23, 162, 184, 0.2);
+            border-color: #17a2b8;
+            color: #bee5eb;
+        }
+
+        .warning {
+            background-color: rgba(255, 165, 0, 0.2);
+            border-color: #ffa500;
+            color: #ffeeba;
+        }
+
+        .danger {
+            background-color: rgba(220, 53, 69, 0.2);
+            border-color: #dc3545;
+            color: #f5c6cb;
+        }
+
+        .qa-item {
+            background-color: rgba(50, 50, 50, 0.5);
+            border-radius: 10px;
+            padding: 20px 25px;
+            margin: 20px 0;
+            border: 1px solid #444;
+        }
+
+        .qa-q {
+            color: #ffd700;
+            font-size: 1.15em;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .qa-a {
+            color: #e0e0e0;
+            padding-left: 10px;
+            border-left: 3px solid #87ceeb;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: rgba(50, 50, 50, 0.7);
+        }
+
+        th, td {
+            border: 1px solid #666;
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: rgba(255, 215, 0, 0.2);
+            color: #ffd700;
+            font-weight: bold;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .step-num {
+            background-color: #ffd700;
+            color: #1a1a2e;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px dashed #555;
+            color: #aaa;
+            font-size: 0.9em;
+        }
+
+        a {
+            color: #4da6ff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #80bdff;
+        }
+
+        .highlight {
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <div class="container">
+            <h1>🎮 MC启动器 帮助中心</h1>
+            <p style="text-align:center;color:#aaa;font-size:1.1em;">版本: v5.3.0 | 最后更新: 2026年6月17日</p>
+
+            <div class="box info">
+                <strong>欢迎使用 MC启动器！</strong> 本页面将帮助你快速上手使用启动器的各项功能。
+            </div>
+
+            <h2>一、快速开始</h2>
+            
+            <div class="step">
+                <div class="step-num">1</div>
+                <div><strong>选择游戏版本</strong> - 在左侧下拉菜单中选择你想要启动的 Minecraft 版本。</div>
+            </div>
+            <div class="step">
+                <div class="step-num">2</div>
+                <div><strong>点击启动按钮</strong> - 点击右下角的启动按钮，游戏将自动运行。</div>
+            </div>
+            <div class="step">
+                <div class="step-num">3</div>
+                <div><strong>开始游戏</strong> - 等待游戏加载完成，尽情享受吧！</div>
+            </div>
+
+            <div class="box warning">
+                <strong>⚠️ 注意：</strong> 如果启动时提示"找不到游戏文件"，请检查游戏目录是否正确设置。
+            </div>
+
+            <h2>二、支持的版本</h2>
+            <table>
+                <tr>
+                    <th>版本名称</th>
+                    <th>可执行文件</th>
+                    <th>说明</th>
+                </tr>
+                <tr>
+                    <td>EaglercraftX 1.8.8</td>
+                    <td><code>Eaglercraft_IR_1.8.8.exe</code></td>
+                    <td>标准版 1.8.8</td>
+                </tr>
+                <tr>
+                    <td>EaglercraftX 1.8.8 WASM</td>
+                    <td><code>Eaglercraft_IR_1.8.8wasm.exe</code></td>
+                    <td>WASM 加速版</td>
+                </tr>
+                <tr>
+                    <td>Eaglercraft 1.12.2</td>
+                    <td><code>Eaglercraft_IR_1.12.2.exe</code></td>
+                    <td>标准版 1.12.2</td>
+                </tr>
+                <tr>
+                    <td>Eaglercraft 1.12.2 WASM</td>
+                    <td><code>Eaglercraft_IR_1.12.2wasm.exe</code></td>
+                    <td>WASM 加速版</td>
+                </tr>
+                <tr>
+                    <td>Eaglercraft_IR_1.2.5</td>
+                    <td><code>Eaglercraft_IR_1.2.5.exe</code></td>
+                    <td>经典旧版本</td>
+                </tr>
+                <tr>
+                    <td>Eaglercraft_IR_beta1.1</td>
+                    <td><code>Eaglercraft_IR_beta1.1.html</code></td>
+                    <td>经典旧版本</td>
+                </tr>
+                <tr>
+                    <td>Eaglercraft_IR_1.5.2</td>
+                    <td><code>Eaglercraft_IR_1.5.2.html</code></td>
+                    <td>经典旧版本</td>
+                </tr>
+                <tr>
+                    <td>Eaglercraft_IR_1.6.4</td>
+                    <td><code>Eaglercraft_IR_1.6.4.html</code></td>
+                    <td>经典旧版本</td>
+                </tr>
+                <tr>
+                    <td>Eaglercraft_IR_阿尔法1.2.6</td>
+                    <td><code>Eaglercraft_IR_a1.2.6.html</code></td>
+                    <td>经典旧版本</td>
+                    <td>.........</td>
+                </tr>
+            </table>
+
+            <h2>三、界面说明</h2>
+            <div class="box">
+                <ul>
+                    <li><strong>左侧区域</strong> - 版本选择下拉框</li>
+                    <li><strong>左下角</strong> - 帮助按钮，点击打开此帮助页面</li>
+                    <li><strong>右下角</strong> - 启动按钮，点击启动选中的游戏版本</li>
+                    <li><strong>右键菜单</strong> - 在窗口任意位置右键，可访问更多功能</li>
+                </ul>
+            </div>
+
+            <h2>四、右键菜单功能</h2>
+            <table>
+                <tr>
+                    <th>菜单项</th>
+                    <th>功能说明</th>
+                </tr>
+                <tr>
+                    <td>检查更新</td>
+                    <td>打开浏览器查看最新版本发布页</td>
+                </tr>
+                <tr>
+                    <td>设置</td>
+                    <td>打开设置对话框（依旧功能开发中）</td>
+                </tr>
+                <tr>
+                    <td>关于</td>
+                    <td>查看启动器版本和作者信息</td>
+                </tr>
+                <tr>
+                    <td>退出</td>
+                    <td>关闭启动器</td>
+                </tr>
+            </table>
+
+            <h2>五、常见问题 (FAQ)</h2>
+
+            <div class="qa-item">
+                <div class="qa-q">🔥问：旧程序 mcjs？</div>
+                <div class="qa-a">
+                    <p>mcjs 是很久以前的旧程序，现已<span class="highlight">停止维护</span>，且已完全迁移至 <strong>Minecraft启动器</strong>！</p>
+                    <div class="box danger">
+                        <strong>⚠️ 重要警告：</strong> 旧程序在到期后可能会被第三方重新注册并用于恶意用途！请及时将旧程序从C盘移除，或更换为本程序（Minecraft启动器）！
+                    </div>
+                    <p>谨防任何来自旧程序的内容，旧程序上的信息不再与本站有关，感谢您的配合！</p>
+                </div>
+            </div>
+
+            <div class="qa-item">
+                <div class="qa-q">🌐 问：（网页）游戏打不开/卡死/崩溃</div>
+                <div class="qa-a">
+                    <p>请使用最新的官方 <strong>Google Chrome</strong> 浏览器访问，尽量不要使用其它浏览器。设备最好使用性能较好的电脑，而非手机等移动设备。如果已经是电脑 Chrome 浏览器，推荐使用 <strong>WASM 版</strong>，性能最佳。</p>
+                </div>
+            </div>
+
+            <div class="qa-item">
+                <div class="qa-q">💻 问：（程序）游戏打不开/卡死/崩溃</div>
+                <div class="qa-a">
+                    <p>请使用最新的官方 <strong>Minecraft启动器</strong>，如果不行，建议卸载重装下载最新版最好！</p>
+                </div>
+            </div>
+
+            <div class="qa-item">
+                <div class="qa-q">🔗 问：多人游戏联机问题</div>
+                <div class="qa-a">
+                    <p>Minecraft不支持局域网联机和 P2P 远程联机。</p>
+                    <ul>
+                        <li><strong>局域网联机</strong> —— 将多个设备连接至同一个网络下，其中一个设备开启"共享世界"，其它设备的"多人游戏"里会自动搜索到开启的自定义房间。</li>
+                        <li><strong>P2P 远程联机</strong> —— 当多个设备不在同一个网络时，确保开启"共享世界"的设备有公网 IP 或 FullCone(NAT1)，且所有设备连接至同一个中继服务器，其它设备的"多人游戏-直接连接-加入共享世界"里输入对应的邀请码就能远程联机。</li>
+                    </ul>
+                    <div class="box warning">
+                        <strong>📌 注意：</strong> Minecraft不提供任何形式的联机服务（规避风险）。您的联机数据不经过Minecraft的服务器，而是 P2P 直连。若您没有公网 IP 或 FullCone(NAT1) 则无法实现远程联机（随着 IP 地址的枯竭，大部分用户都处于大内网 NAT 环境中，不过您可以尝试联系网络运营商开启公网）。
+                    </div>
+                </div>
+            </div>
+
+            <div class="qa-item">
+                <div class="qa-q">🆕 问：新版本（1.13+）或模组是否支持</div>
+                <div class="qa-a">
+                    <p>支持，但是<span class="highlight">我们还没做呢～</span>，您能在网页上玩到的 MC 最新版本就是 1.12.2 了。</p>
+                </div>
+            </div>
+
+            <div class="qa-item">
+                <div class="qa-q">🌍 问：多人游戏服务器</div>
+                <div class="qa-a">
+                    <p>支持，就和正常网站一样玩儿，只有联机不支持敬请期待！</p>
+                </div>
+            </div>
+
+            <div class="box success">
+                <strong>💡 提示：</strong> 如果遇到其他问题，可以右键点击启动器空白处，选择"检查更新"查看最新版本。
+            </div>
+
+            <h2>六、技术信息</h2>
+            <ul>
+                <li><strong>开发语言:</strong> C++ (Win32 API)</li>
+                <li><strong>编译环境:</strong> Dev-C++ 5.11 / MinGW-W64</li>
+                <li><strong>依赖库:</strong> comctl32, shell32, user32</li>
+                <li><strong>反馈地址:</strong> <a href="https://gitee.com/Wanderlust-Code/project-pioneer/issues">Gitee 仓库</a></li>
+            
+            <h2>七、隐私政策</h2>
+            <ul>
+                <li><strong>隐私政策地址:</strong> <a href="https://the1234556789.github.io/project-pioneer/privacy.html">查看</a></li>
+            </ul>
+
+            <div class="footer">
+                <p>MC启动器 v5.6.0 | Copyright © 2024-2026 会泽工作室</p>
+                <p>Powered by Eaglercraft Project</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
