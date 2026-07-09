@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -423,7 +423,7 @@
         .ai-notice {
             position: fixed;
             right: 16px;
-            bottom: 16px;
+            bottom: 110px;
             background: rgba(22, 33, 62, 0.95);
             border: 1px solid #0f3460;
             color: #aaa;
@@ -439,6 +439,34 @@
 
         .ai-notice strong {
             color: #e94560;
+        }
+
+        /* 反馈按钮 */
+        .feedback-btn {
+            position: fixed;
+            right: 16px;
+            bottom: 60px;
+            background: linear-gradient(135deg, #e94560, #c0392b);
+            color: #fff;
+            font-size: 12px;
+            padding: 8px 14px;
+            border-radius: 8px;
+            text-decoration: none;
+            z-index: 999;
+            box-shadow: 0 4px 20px rgba(233, 69, 96, 0.35);
+            display: none;
+            transition: transform 0.15s;
+        }
+
+        .feedback-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .feedback-btn span {
+            display: block;
+            font-size: 10px;
+            opacity: 0.85;
+            margin-top: 2px;
         }
 
         /* 响应式 */
@@ -616,8 +644,8 @@
     <footer class="footer">
         <p>
             <span data-i18n="footer_copy">MC 启动器 &copy; 2024-2026 会泽工作室</span><br>
-            <span data-i18n="footer_partner">合作伙伴：&copy; 文依工作室</span><br>
-            <span data-i18n="footer_eagler">原作者：&copy; 2026 Eaglercraft.ir. All rights reserved.</span><br>
+            <span data-i18n="footer_partner">合作伙伴：文依工作室</span><br>
+            <span data-i18n="footer_eagler">原作者：(C) 2026 Eaglercraft.ir. All rights reserved.</span><br>
             <span data-i18n="footer_disclaimer">Minecraft 是 Mojang Studios 的商标。本网站与 Mojang 或 Microsoft 无关。</span><br>
             <a href="https://gitee.com/Wanderlust-Code/project-pioneer" data-i18n="footer_gitee">Gitee 仓库</a>
         </p>
@@ -625,8 +653,14 @@
 
     <!-- AI 翻译提示 -->
     <div class="ai-notice" id="aiNotice">
-        ⚡ <span data-i18n="ai_notice">当前为 <strong>AI 翻译</strong> 版本 · 如发现错误欢迎反馈</span>
+        ⚡ <span data-i18n="ai_notice"></span>
     </div>
+
+    <!-- 反馈翻译错误 -->
+    <a href="#" class="feedback-btn" id="feedbackBtn" target="_blank">
+        <span data-i18n="feedback_text"></span>
+        <span id="feedbackLang"></span>
+    </a>
 
     <script>
         const i18n = {
@@ -691,12 +725,13 @@
                 sponsor_btn: "前往赞助",
 
                 footer_copy: "MC 启动器 &copy; 2024-2026 会泽工作室",
-                footer_partner: "合作伙伴：&copy; 2026 文依工作室",
-                footer_eagler: "原作者：&copy; 2026 Eaglercraft.ir. All rights reserved.",
+                footer_partner: "合作伙伴：文依工作室",
+                footer_eagler: "原作者：(C) 2026 Eaglercraft.ir. All rights reserved.",
                 footer_disclaimer: "Minecraft 是 Mojang Studios 的商标。本网站与 Mojang 或 Microsoft 无关。",
                 footer_gitee: "Gitee 仓库",
 
-                ai_notice: "当前为 <strong>AI 翻译</strong> 版本 · 如发现错误欢迎反馈"
+                ai_notice: "当前为 <strong>AI 翻译</strong> 版本 · 如发现错误欢迎反馈",
+                feedback_text: "反馈翻译错误"
             },
             "zh-TW": {
                 nav_download: "下載",
@@ -759,12 +794,13 @@
                 sponsor_btn: "前往贊助",
 
                 footer_copy: "MC 啟動器 &copy; 2024-2026 會澤工作室",
-                footer_partner: "合作夥伴：&copy; 2026 文依工作室",
-                footer_eagler: "原作者：&copy; 2026 Eaglercraft.ir. All rights reserved.",
+                footer_partner: "合作夥伴：文依工作室",
+                footer_eagler: "原作者：(C) 2026 Eaglercraft.ir. All rights reserved.",
                 footer_disclaimer: "Minecraft 是 Mojang Studios 的商標。本網站與 Mojang 或 Microsoft 無關。",
                 footer_gitee: "Gitee 倉庫",
 
-                ai_notice: "當前為 <strong>AI 翻譯</strong> 版本 · 如發現錯誤歡迎回饋"
+                ai_notice: "當前為 <strong>AI 翻譯</strong> 版本 · 如發現錯誤歡迎回饋",
+                feedback_text: "回報翻譯錯誤"
             },
             "en-US": {
                 nav_download: "Download",
@@ -827,12 +863,13 @@
                 sponsor_btn: "Sponsor Now",
 
                 footer_copy: "MC Launcher &copy; 2024-2026 Huize Studio",
-                footer_partner: "Partner: &copy; 2026 Wenyi Studio",
-                footer_eagler: "Original: &copy; 2026 Eaglercraft.ir. All rights reserved.",
+                footer_partner: "Partner: Wenyi Studio",
+                footer_eagler: "Original: (C) 2026 Eaglercraft.ir. All rights reserved.",
                 footer_disclaimer: "Minecraft is a trademark of Mojang Studios. This site is not affiliated with Mojang or Microsoft.",
                 footer_gitee: "Gitee Repository",
 
-                ai_notice: "<strong>AI-translated</strong> version · Feedback welcome"
+                ai_notice: "<strong>AI-translated</strong> version · Feedback welcome",
+                feedback_text: "Report translation issue"
             },
             "ru-RU": {
                 nav_download: "Скачать",
@@ -895,15 +932,34 @@
                 sponsor_btn: "Поддержать",
 
                 footer_copy: "MC Launcher &copy; 2024-2026 Huize Studio",
-                footer_partner: "Партнёр: &copy; 2026 Wenyi Studio",
-                footer_eagler: "Оригинал: &copy; 2026 Eaglercraft.ir. Все права защищены.",
+                footer_partner: "Партнёр: Wenyi Studio",
+                footer_eagler: "Оригинал: (C) 2026 Eaglercraft.ir. Все права защищены.",
                 footer_disclaimer: "Minecraft — торговая марка Mojang Studios. Сайт не связан с Mojang или Microsoft.",
                 footer_gitee: "Репозиторий Gitee",
 
-                ai_notice: "<strong>Переведено ИИ</strong> · Сообщите об ошибках"
+                ai_notice: "<strong>Переведено ИИ</strong> · Сообщите об ошибках",
+                feedback_text: "Сообщить об ошибке перевода"
             }
         };
 
+        /* 自动检测语言（基于浏览器语言） */
+        function detectLanguage() {
+            const lang = navigator.language || navigator.userLanguage || "";
+
+            if (lang.startsWith("zh")) {
+                if (lang.includes("TW") || lang.includes("HK") || lang.includes("MO")) {
+                    return "zh-TW";
+                }
+                return "zh-CN";
+            }
+
+            if (lang.startsWith("en")) return "en-US";
+            if (lang.startsWith("ru")) return "ru-RU";
+
+            return "zh-CN";
+        }
+
+        /* 应用语言 */
         function applyLang(lang) {
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
@@ -913,14 +969,38 @@
             });
 
             const aiNotice = document.getElementById("aiNotice");
+            const feedbackBtn = document.getElementById("feedbackBtn");
+            const feedbackLang = document.getElementById("feedbackLang");
+
             if (lang === "zh-CN") {
                 aiNotice.style.display = "none";
+                feedbackBtn.style.display = "none";
             } else {
                 aiNotice.style.display = "block";
+                feedbackBtn.style.display = "block";
+                feedbackLang.textContent = lang;
             }
 
             document.documentElement.lang = lang;
         }
+
+        /* 生成 Gitee Issue 链接 */
+        function buildIssueUrl(lang) {
+            const repo = "Wanderlust-Code/project-pioneer";
+            const title = encodeURIComponent(`[翻译错误反馈] ${lang}`);
+            const body = encodeURIComponent(
+                `### 语言 / Language\n${lang}\n\n` +
+                `### 当前页面 / Page\n${location.href}\n\n` +
+                `### 问题描述 / Description\n<!-- 请填写翻译错误的具体位置 -->\n\n` +
+                `### 建议修正 / Suggested Correction\n<!-- 请填写正确的翻译 -->`
+            );
+            return `https://gitee.com/${repo}/issues/new?title=${title}&body=${body}`;
+        }
+
+        /* 初始化 */
+        const savedLang = localStorage.getItem('lang') || detectLanguage();
+        document.getElementById('langSelect').value = savedLang;
+        applyLang(savedLang);
 
         document.getElementById('langSelect').addEventListener('change', e => {
             const lang = e.target.value;
@@ -928,9 +1008,10 @@
             localStorage.setItem('lang', lang);
         });
 
-        const savedLang = localStorage.getItem('lang') || 'zh-CN';
-        document.getElementById('langSelect').value = savedLang;
-        applyLang(savedLang);
+        document.getElementById('feedbackBtn').addEventListener('click', function () {
+            const lang = document.getElementById('langSelect').value;
+            this.href = buildIssueUrl(lang);
+        });
     </script>
 
 </body>
