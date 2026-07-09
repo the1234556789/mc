@@ -1,1 +1,1018 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MC 启动器 - 下载</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            background: #1a1a2e;
+            color: #e0e0e0;
+            min-height: 100vh;
+        }
+
+        /* 顶部导航 */
+        .navbar {
+            background: #16213e;
+            padding: 14px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 2px solid #0f3460;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar .logo {
+            font-size: 20px;
+            font-weight: bold;
+            color: #00d4aa;
+            text-decoration: none;
+        }
+
+        .navbar .logo span {
+            color: #e94560;
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .nav-links a {
+            color: #b0b0b0;
+            text-decoration: none;
+            margin-left: 28px;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .navbar .nav-links a:hover {
+            color: #00d4aa;
+        }
+
+        /* 语言切换 */
+        .lang-switch {
+            margin-left: 28px;
+            position: relative;
+        }
+
+        .lang-switch select {
+            background: #0f3460;
+            color: #e0e0e0;
+            border: 1px solid #00d4aa;
+            border-radius: 6px;
+            padding: 6px 28px 6px 10px;
+            font-size: 13px;
+            cursor: pointer;
+            appearance: none;
+        }
+
+        .lang-switch::after {
+            content: "▾";
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #00d4aa;
+            pointer-events: none;
+        }
+
+        /* 主区域 */
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 48px 24px;
+        }
+
+        /* Hero 区域 */
+        .hero {
+            text-align: center;
+            padding: 60px 0 48px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            color: #ffffff;
+            margin-bottom: 12px;
+        }
+
+        .hero h1 .accent {
+            color: #00d4aa;
+        }
+
+        .hero .version-badge {
+            display: inline-block;
+            background: #e94560;
+            color: #fff;
+            padding: 4px 14px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 17px;
+            color: #a0a0a0;
+            max-width: 600px;
+            margin: 0 auto 32px;
+            line-height: 1.7;
+        }
+
+        /* 下载按钮 */
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #00d4aa, #00b894);
+            color: #fff;
+            padding: 16px 48px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: transform 0.15s, box-shadow 0.15s;
+            box-shadow: 0 4px 20px rgba(0, 212, 170, 0.3);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 28px rgba(0, 212, 170, 0.45);
+        }
+
+        .download-btn .sub-text {
+            display: block;
+            font-size: 12px;
+            font-weight: normal;
+            opacity: 0.85;
+            margin-top: 4px;
+        }
+
+        /* 次要按钮 */
+        .btn-secondary {
+            display: inline-block;
+            background: #16213e;
+            color: #00d4aa;
+            padding: 10px 28px;
+            font-size: 14px;
+            border: 1px solid #0f3460;
+            border-radius: 6px;
+            text-decoration: none;
+            margin-left: 12px;
+            transition: background 0.2s;
+        }
+
+        .btn-secondary:hover {
+            background: #1a2744;
+        }
+
+        /* 区块标题 */
+        .section-title {
+            font-size: 22px;
+            color: #ffffff;
+            margin-bottom: 24px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #0f3460;
+        }
+
+        /* 特性卡片 */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            margin-bottom: 56px;
+        }
+
+        .feature-card {
+            background: #16213e;
+            border: 1px solid #0f3460;
+            border-radius: 10px;
+            padding: 28px 24px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-3px);
+            border-color: #00d4aa;
+        }
+
+        .feature-card .icon {
+            font-size: 32px;
+            margin-bottom: 14px;
+        }
+
+        .feature-card h3 {
+            font-size: 16px;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .feature-card p {
+            font-size: 13px;
+            color: #888;
+            line-height: 1.7;
+        }
+
+        /* 在线版区块 */
+        .online-section {
+            background: linear-gradient(135deg, #16213e, #1a1a3e);
+            border: 1px solid #0f3460;
+            border-radius: 10px;
+            padding: 36px 32px;
+            margin-bottom: 56px;
+            text-align: center;
+        }
+
+        .online-section h2 {
+            font-size: 22px;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .online-section p {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 24px;
+            line-height: 1.7;
+        }
+
+        .online-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #e94560, #c0392b);
+            color: #fff;
+            padding: 14px 44px;
+            font-size: 17px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: transform 0.15s, box-shadow 0.15s;
+            box-shadow: 0 4px 20px rgba(233, 69, 96, 0.3);
+        }
+
+        .online-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 28px rgba(233, 69, 96, 0.45);
+        }
+
+        .online-btn .sub-text {
+            display: block;
+            font-size: 12px;
+            font-weight: normal;
+            opacity: 0.85;
+            margin-top: 4px;
+        }
+
+        /* 更新日志 */
+        .changelog {
+            background: #16213e;
+            border: 1px solid #0f3460;
+            border-radius: 10px;
+            padding: 28px 32px;
+            margin-bottom: 56px;
+        }
+
+        .changelog-item {
+            margin-bottom: 20px;
+        }
+
+        .changelog-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .changelog-item .version-tag {
+            display: inline-block;
+            background: #0f3460;
+            color: #00d4aa;
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .changelog-item .date {
+            color: #666;
+            font-size: 12px;
+        }
+
+        .changelog-item ul {
+            margin-top: 8px;
+            padding-left: 20px;
+        }
+
+        .changelog-item li {
+            font-size: 13px;
+            color: #aaa;
+            line-height: 1.8;
+        }
+
+        /* 赞助区 */
+        .sponsor-section {
+            text-align: center;
+            background: #16213e;
+            border: 1px solid #0f3460;
+            border-radius: 10px;
+            padding: 36px 32px;
+            margin-bottom: 56px;
+        }
+
+        .sponsor-section h2 {
+            font-size: 20px;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .sponsor-section p {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 20px;
+        }
+
+        .sponsor-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #e94560, #c0392b);
+            color: #fff;
+            padding: 12px 40px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: transform 0.15s, box-shadow 0.15s;
+            box-shadow: 0 4px 20px rgba(233, 69, 96, 0.3);
+        }
+
+        .sponsor-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 28px rgba(233, 69, 96, 0.45);
+        }
+
+        /* 帮助入口 */
+        .help-banner {
+            background: linear-gradient(135deg, #16213e, #1a1a3e);
+            border: 1px solid #0f3460;
+            border-radius: 10px;
+            padding: 24px 32px;
+            margin-bottom: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .help-banner h3 {
+            color: #fff;
+            font-size: 16px;
+            margin-bottom: 6px;
+        }
+
+        .help-banner p {
+            color: #888;
+            font-size: 13px;
+        }
+
+        .help-banner a {
+            background: #00d4aa;
+            color: #fff;
+            padding: 10px 28px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            transition: background 0.2s;
+        }
+
+        .help-banner a:hover {
+            background: #00b894;
+        }
+
+        /* 页脚 */
+        .footer {
+            background: #0f0f23;
+            border-top: 1px solid #1a1a3e;
+            padding: 32px 24px;
+            text-align: center;
+        }
+
+        .footer p {
+            font-size: 12px;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .footer a {
+            color: #00d4aa;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* AI 翻译提示 */
+        .ai-notice {
+            position: fixed;
+            right: 16px;
+            bottom: 110px;
+            background: rgba(22, 33, 62, 0.95);
+            border: 1px solid #0f3460;
+            color: #aaa;
+            font-size: 12px;
+            padding: 8px 14px;
+            border-radius: 8px;
+            z-index: 999;
+            line-height: 1.5;
+            max-width: 320px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+            display: none;
+        }
+
+        .ai-notice strong {
+            color: #e94560;
+        }
+
+        /* 反馈按钮 */
+        .feedback-btn {
+            position: fixed;
+            right: 16px;
+            bottom: 60px;
+            background: linear-gradient(135deg, #e94560, #c0392b);
+            color: #fff;
+            font-size: 12px;
+            padding: 8px 14px;
+            border-radius: 8px;
+            text-decoration: none;
+            z-index: 999;
+            box-shadow: 0 4px 20px rgba(233, 69, 96, 0.35);
+            display: none;
+            transition: transform 0.15s;
+        }
+
+        .feedback-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .feedback-btn span {
+            display: block;
+            font-size: 10px;
+            opacity: 0.85;
+            margin-top: 2px;
+        }
+
+        /* 响应式 */
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 28px; }
+            .hero p { font-size: 14px; }
+            .download-btn { padding: 14px 36px; font-size: 16px; }
+            .btn-secondary { margin-left: 0; margin-top: 10px; display: block; }
+            .help-banner { flex-direction: column; text-align: center; }
+            .help-banner a { margin-top: 12px; }
+            .navbar { flex-wrap: wrap; }
+            .lang-switch { margin-top: 10px; margin-left: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <a href="#" class="logo">MC<span>启动器</span></a>
+        <div class="nav-links">
+            <a href="#download" data-i18n="nav_download">下载</a>
+            <a href="#features" data-i18n="nav_features">功能</a>
+            <a href="#online" data-i18n="nav_online">在线版</a>
+            <a href="#changelog" data-i18n="nav_changelog">更新日志</a>
+            <a href="help.html" data-i18n="nav_help">帮助</a>
+            <a href="https://ifdian.net/a/sponsoring" data-i18n="nav_sponsor">赞助</a>
+
+            <!-- 语言切换 -->
+            <div class="lang-switch">
+                <select id="langSelect">
+                    <option value="zh-CN" selected>中文简体</option>
+                    <option value="zh-TW">中文繁體</option>
+                    <option value="en-US">English</option>
+                    <option value="ru-RU">Русский</option>
+                </select>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <!-- Hero 区域 -->
+        <section class="hero">
+            <div class="version-badge">v6.0.0</div>
+            <h1 data-i18n="hero_title">MC <span class="accent">启动器</span></h1>
+            <p data-i18n="hero_desc">
+                轻量、快速、安全的 Minecraft 启动工具。<br>
+                支持多版本选择，一键启动，畅享游戏乐趣。
+            </p>
+            <div>
+                <a href="https://gitee.com/Wanderlust-Code/project-pioneer" class="download-btn" data-i18n="download_btn">
+                    免费下载
+                    <span class="sub-text" data-i18n="download_sub">Windows 7 / 8 /8.1/ 10 / 11</span>
+                </a>
+                <a href="https://gitee.com/Wanderlust-Code/project-pioneer" class="btn-secondary" data-i18n="gitee_repo">
+                    Gitee 仓库
+                </a>
+            </div>
+        </section>
+
+        <!-- 功能特性 -->
+        <section id="features">
+            <h2 class="section-title" data-i18n="features_title">功能特性</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <div class="icon">🎮</div>
+                    <h3 data-i18n="feature_1_title">多版本支持</h3>
+                    <p data-i18n="feature_1_desc">支持 EaglercraftX 1.8.8、1.12.2 等多个经典版本，满足不同需求。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">⚡</div>
+                    <h3 data-i18n="feature_2_title">WASM 加速</h3>
+                    <p data-i18n="feature_2_desc">部分版本内置 WASM 加速方案，游戏运行更流畅，加载更快。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🔧</div>
+                    <h3 data-i18n="feature_3_title">个性化设置</h3>
+                    <p data-i18n="feature_3_desc">丰富的自定义选项，打造属于你的启动器体验。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🛡️</div>
+                    <h3 data-i18n="feature_4_title">安全可靠</h3>
+                    <p data-i18n="feature_4_desc">文件完整性校验，启动前自动检测资源文件，确保运行安全。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">📦</div>
+                    <h3 data-i18n="feature_5_title">轻量部署</h3>
+                    <p data-i18n="feature_5_desc">单文件分发，绿色免安装，解压即用，不污染系统注册表。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🌐</div>
+                    <h3 data-i18n="feature_6_title">持续更新</h3>
+                    <p data-i18n="feature_6_desc">活跃维护中，新版本和新功能持续推出。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 帮助入口 -->
+        <section class="help-banner">
+            <div>
+                <h3 data-i18n="help_title">📖 需要帮助？</h3>
+                <p data-i18n="help_desc">查看完整的使用帮助和常见问题解答</p>
+            </div>
+            <a href="help.html" data-i18n="help_btn">打开帮助中心</a>
+        </section>
+
+        <!-- 在线版我的世界 -->
+        <section id="online" class="online-section">
+            <h2 data-i18n="online_title">🌍 在线版我的世界</h2>
+            <p data-i18n="online_desc">
+                无需下载，打开浏览器即可畅玩经典 Minecraft！<br>
+                基于 Eaglercraft 技术，支持 1.8.8 版本，随时随地享受方块世界的乐趣。
+            </p>
+            <a href="https://the1234556789.github.io/project-pioneer/1.8.8.html" class="online-btn" target="_blank" data-i18n="online_btn">
+                立即开玩
+                <span class="sub-text" data-i18n="online_btn_sub">打开在线版 1.8.8</span>
+            </a>
+        </section>
+
+        <!-- 更新日志 -->
+        <section id="changelog">
+            <h2 class="section-title" data-i18n="changelog_title">更新日志</h2>
+            <div class="changelog">
+                <div class="changelog-item">
+                    <span class="version-tag">v6.0.0</span>
+                    <span class="date" data-i18n="date_6_0_0">2026年7月6日</span>
+                    <ul>
+                        <li data-i18n="log_6_0_0_1">新增1.20和1.20wasm</li>
+                        <li data-i18n="log_6_0_0_2">修复了已知问题</li>
+                    </ul>
+                </div>
+                <div class="changelog-item">
+                    <span class="version-tag">v5.6.0</span>
+                    <span class="date" data-i18n="date_5_6_0">2026年7月3日</span>
+                    <ul>
+                        <li data-i18n="log_5_6_0_1">新增初始化引导页，首次使用更友好</li>
+                        <li data-i18n="log_5_6_0_2">新增本地账号注册与登录系统</li>
+                        <li data-i18n="log_5_6_0_3">新增「赞助我们」入口</li>
+                        <li data-i18n="log_5_6_0_4">帮助文档迁移至在线版本</li>
+                        <li data-i18n="log_5_6_0_5">优化资源文件校验逻辑</li>
+                    </ul>
+                </div>
+                <div class="changelog-item">
+                    <span class="version-tag">v5.5.0</span>
+                    <span class="date" data-i18n="date_5_5_0">2026年6月30日</span>
+                    <ul>
+                        <li data-i18n="log_5_5_0_1">新增闪屏启动动画</li>
+                        <li data-i18n="log_5_5_0_2">新增右键菜单功能</li>
+                        <li data-i18n="log_5_5_0_3">支持多个游戏版本切换</li>
+                    </ul>
+                </div>
+                <div class="changelog-item">
+                    <span class="version-tag">v5.0.0</span>
+                    <span class="date" data-i18n="date_5_0_0">2026年5月</span>
+                    <ul>
+                        <li data-i18n="log_5_0_0_1">全面重构启动器架构</li>
+                        <li data-i18n="log_5_0_0_2">采用 Win32 原生 API 重写</li>
+                        <li data-i18n="log_5_0_0_3">双缓冲绘制，界面更流畅</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 赞助区 -->
+        <section class="sponsor-section">
+            <h2 data-i18n="sponsor_title">❤️ 支持我们</h2>
+            <p data-i18n="sponsor_desc">如果 MC 启动器对你有帮助，欢迎赞助支持项目持续开发！</p>
+            <a href="https://ifdian.net/a/sponsoring" class="sponsor-btn" data-i18n="sponsor_btn">前往赞助</a>
+        </section>
+
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <p>
+            <span data-i18n="footer_copy">MC 启动器 &copy; 2024-2026 会泽工作室</span><br>
+            <span data-i18n="footer_partner">合作伙伴：文依工作室</span><br>
+            <span data-i18n="footer_eagler">原作者：(C) 2026 Eaglercraft.ir. All rights reserved.</span><br>
+            <span data-i18n="footer_disclaimer">Minecraft 是 Mojang Studios 的商标。本网站与 Mojang 或 Microsoft 无关。</span><br>
+            <a href="https://gitee.com/Wanderlust-Code/project-pioneer" data-i18n="footer_gitee">Gitee 仓库</a>
+        </p>
+    </footer>
+
+    <!-- AI 翻译提示 -->
+    <div class="ai-notice" id="aiNotice">
+        ⚡ <span data-i18n="ai_notice"></span>
+    </div>
+
+    <!-- 反馈翻译错误 -->
+    <a href="#" class="feedback-btn" id="feedbackBtn" target="_blank">
+        <span data-i18n="feedback_text"></span>
+        <span id="feedbackLang"></span>
+    </a>
+
+    <script>
+        const i18n = {
+            "zh-CN": {
+                nav_download: "下载",
+                nav_features: "功能",
+                nav_online: "在线版",
+                nav_changelog: "更新日志",
+                nav_help: "帮助",
+                nav_sponsor: "赞助",
+
+                hero_title: "MC <span class=\"accent\">启动器</span>",
+                hero_desc: "轻量、快速、安全的 Minecraft 启动工具。<br>支持多版本选择，一键启动，畅享游戏乐趣。",
+                download_btn: "免费下载",
+                download_sub: "Windows 7 / 8 /8.1/ 10 / 11",
+                gitee_repo: "Gitee 仓库",
+
+                features_title: "功能特性",
+                feature_1_title: "多版本支持",
+                feature_1_desc: "支持 EaglercraftX 1.8.8、1.12.2 等多个经典版本，满足不同需求。",
+                feature_2_title: "WASM 加速",
+                feature_2_desc: "部分版本内置 WASM 加速方案，游戏运行更流畅，加载更快。",
+                feature_3_title: "个性化设置",
+                feature_3_desc: "丰富的自定义选项，打造属于你的启动器体验。",
+                feature_4_title: "安全可靠",
+                feature_4_desc: "文件完整性校验，启动前自动检测资源文件，确保运行安全。",
+                feature_5_title: "轻量部署",
+                feature_5_desc: "单文件分发，绿色免安装，解压即用，不污染系统注册表。",
+                feature_6_title: "持续更新",
+                feature_6_desc: "活跃维护中，新版本和新功能持续推出。",
+
+                help_title: "📖 需要帮助？",
+                help_desc: "查看完整的使用帮助和常见问题解答",
+                help_btn: "打开帮助中心",
+
+                online_title: "🌍 在线版我的世界",
+                online_desc: "无需下载，打开浏览器即可畅玩经典 Minecraft！<br>基于 Eaglercraft 技术，支持 1.8.8 版本，随时随地享受方块世界的乐趣。",
+                online_btn: "立即开玩",
+                online_btn_sub: "打开在线版 1.8.8",
+
+                changelog_title: "更新日志",
+                date_6_0_0: "2026年7月6日",
+                log_6_0_0_1: "新增1.20和1.20wasm",
+                log_6_0_0_2: "修复了已知问题",
+                date_5_6_0: "2026年7月3日",
+                log_5_6_0_1: "新增初始化引导页，首次使用更友好",
+                log_5_6_0_2: "新增本地账号注册与登录系统",
+                log_5_6_0_3: "新增「赞助我们」入口",
+                log_5_6_0_4: "帮助文档迁移至在线版本",
+                log_5_6_0_5: "优化资源文件校验逻辑",
+                date_5_5_0: "2026年6月30日",
+                log_5_5_0_1: "新增闪屏启动动画",
+                log_5_5_0_2: "新增右键菜单功能",
+                log_5_5_0_3: "支持多个游戏版本切换",
+                date_5_0_0: "2026年5月",
+                log_5_0_0_1: "全面重构启动器架构",
+                log_5_0_0_2: "采用 Win32 原生 API 重写",
+                log_5_0_0_3: "双缓冲绘制，界面更流畅",
+
+                sponsor_title: "❤️ 支持我们",
+                sponsor_desc: "如果 MC 启动器对你有帮助，欢迎赞助支持项目持续开发！",
+                sponsor_btn: "前往赞助",
+
+                footer_copy: "MC 启动器 &copy; 2024-2026 会泽工作室",
+                footer_partner: "合作伙伴：文依工作室",
+                footer_eagler: "原作者：(C) 2026 Eaglercraft.ir. All rights reserved.",
+                footer_disclaimer: "Minecraft 是 Mojang Studios 的商标。本网站与 Mojang 或 Microsoft 无关。",
+                footer_gitee: "Gitee 仓库",
+
+                ai_notice: "当前为 <strong>AI 翻译</strong> 版本 · 如发现错误欢迎反馈",
+                feedback_text: "反馈翻译错误"
+            },
+            "zh-TW": {
+                nav_download: "下載",
+                nav_features: "功能",
+                nav_online: "線上版",
+                nav_changelog: "更新日誌",
+                nav_help: "幫助",
+                nav_sponsor: "贊助",
+
+                hero_title: "MC <span class=\"accent\">啟動器</span>",
+                hero_desc: "輕量、快速、安全的 Minecraft 啟動工具。<br>支援多版本選擇，一鍵啟動，暢享遊戲樂趣。",
+                download_btn: "免費下載",
+                download_sub: "Windows 7 / 8 / 8.1 / 10 / 11",
+                gitee_repo: "Gitee 倉庫",
+
+                features_title: "功能特色",
+                feature_1_title: "多版本支援",
+                feature_1_desc: "支援 EaglercraftX 1.8.8、1.12.2 等多個經典版本，滿足不同需求。",
+                feature_2_title: "WASM 加速",
+                feature_2_desc: "部分版本內建 WASM 加速方案，遊戲運行更流暢，載入更快。",
+                feature_3_title: "個人化設定",
+                feature_3_desc: "豐富的自訂選項，打造屬於你的啟動器體驗。",
+                feature_4_title: "安全可靠",
+                feature_4_desc: "檔案完整性校驗，啟動前自動檢測資源檔案，確保運行安全。",
+                feature_5_title: "輕量部署",
+                feature_5_desc: "單檔案散佈，綠色免安裝，解壓即用，不汙染系統登錄檔。",
+                feature_6_title: "持續更新",
+                feature_6_desc: "活躍維護中，新版本與新功能持續推出。",
+
+                help_title: "📖 需要幫助？",
+                help_desc: "查看完整的使用說明與常見問題解答",
+                help_btn: "開啟幫助中心",
+
+                online_title: "🌍 線上版我的世界",
+                online_desc: "無需下載，開啟瀏覽器即可暢玩經典 Minecraft！<br>基於 Eaglercraft 技術，支援 1.8.8 版本。",
+                online_btn: "立即遊玩",
+                online_btn_sub: "開啟線上版 1.8.8",
+
+                changelog_title: "更新日誌",
+                date_6_0_0: "2026年7月6日",
+                log_6_0_0_1: "新增 1.20 與 1.20 wasm",
+                log_6_0_0_2: "修復已知問題",
+                date_5_6_0: "2026年7月3日",
+                log_5_6_0_1: "新增初始化引導頁，首次使用更友善",
+                log_5_6_0_2: "新增本地帳號註冊與登入系統",
+                log_5_6_0_3: "新增「贊助我們」入口",
+                log_5_6_0_4: "幫助文件遷移至線上版本",
+                log_5_6_0_5: "優化資源檔案校驗邏輯",
+                date_5_5_0: "2026年6月30日",
+                log_5_5_0_1: "新增閃屏啟動動畫",
+                log_5_5_0_2: "新增右鍵選單功能",
+                log_5_5_0_3: "支援多個遊戲版本切換",
+                date_5_0_0: "2026年5月",
+                log_5_0_0_1: "全面重構啟動器架構",
+                log_5_0_0_2: "採用 Win32 原生 API 重寫",
+                log_5_0_0_3: "雙緩衝繪製，介面更流暢",
+
+                sponsor_title: "❤️ 支持我們",
+                sponsor_desc: "如果 MC 啟動器對你有幫助，歡迎贊助支持專案持續開發！",
+                sponsor_btn: "前往贊助",
+
+                footer_copy: "MC 啟動器 &copy; 2024-2026 會澤工作室",
+                footer_partner: "合作夥伴：文依工作室",
+                footer_eagler: "原作者：(C) 2026 Eaglercraft.ir. All rights reserved.",
+                footer_disclaimer: "Minecraft 是 Mojang Studios 的商標。本網站與 Mojang 或 Microsoft 無關。",
+                footer_gitee: "Gitee 倉庫",
+
+                ai_notice: "當前為 <strong>AI 翻譯</strong> 版本 · 如發現錯誤歡迎回饋",
+                feedback_text: "回報翻譯錯誤"
+            },
+            "en-US": {
+                nav_download: "Download",
+                nav_features: "Features",
+                nav_online: "Online",
+                nav_changelog: "Changelog",
+                nav_help: "Help",
+                nav_sponsor: "Sponsor",
+
+                hero_title: "MC <span class=\"accent\">Launcher</span>",
+                hero_desc: "Lightweight, fast and secure Minecraft launcher.<br>Multiple versions, one-click launch.",
+                download_btn: "Free Download",
+                download_sub: "Windows 7 / 8 / 8.1 / 10 / 11",
+                gitee_repo: "Gitee Repository",
+
+                features_title: "Features",
+                feature_1_title: "Multi-version Support",
+                feature_1_desc: "Supports EaglercraftX 1.8.8, 1.12.2 and more classic versions.",
+                feature_2_title: "WASM Acceleration",
+                feature_2_desc: "Built-in WASM optimization for smoother gameplay and faster loading.",
+                feature_3_title: "Customization",
+                feature_3_desc: "Rich options to personalize your launcher experience.",
+                feature_4_title: "Safe & Secure",
+                feature_4_desc: "Integrity checks and resource validation before launching.",
+                feature_5_title: "Portable",
+                feature_5_desc: "Single-file, no installation, unpack and play, registry-free.",
+                feature_6_title: "Active Updates",
+                feature_6_desc: "Regular updates and new features are on the way.",
+
+                help_title: "📖 Need Help?",
+                help_desc: "Check out the full help guide and FAQ",
+                help_btn: "Open Help Center",
+
+                online_title: "🌍 Play Online",
+                online_desc: "No download required. Play classic Minecraft directly in your browser!<br>Powered by Eaglercraft (1.8.8).",
+                online_btn: "Play Now",
+                online_btn_sub: "Open 1.8.8 Online",
+
+                changelog_title: "Changelog",
+                date_6_0_0: "July 6, 2026",
+                log_6_0_0_1: "Added 1.20 and 1.20 wasm",
+                log_6_0_0_2: "Fixed known issues",
+                date_5_6_0: "July 3, 2026",
+                log_5_6_0_1: "Added onboarding wizard for first-time users",
+                log_5_6_0_2: "Added local account registration and login system",
+                log_5_6_0_3: "Added Sponsor section",
+                log_5_6_0_4: "Migrated help docs to online version",
+                log_5_6_0_5: "Optimized resource file verification logic",
+                date_5_5_0: "June 30, 2026",
+                log_5_5_0_1: "Added splash screen animation",
+                log_5_5_0_2: "Added right-click menu support",
+                log_5_5_0_3: "Added multi-version switching",
+                date_5_0_0: "May 2026",
+                log_5_0_0_1: "Fully refactored launcher architecture",
+                log_5_0_0_2: "Rewritten with native Win32 API",
+                log_5_0_0_3: "Double buffering for smoother UI rendering",
+
+                sponsor_title: "❤️ Support Us",
+                sponsor_desc: "If MC Launcher helps you, consider sponsoring to keep development active!",
+                sponsor_btn: "Sponsor Now",
+
+                footer_copy: "MC Launcher &copy; 2024-2026 Huize Studio",
+                footer_partner: "Partner: Wenyi Studio",
+                footer_eagler: "Original: (C) 2026 Eaglercraft.ir. All rights reserved.",
+                footer_disclaimer: "Minecraft is a trademark of Mojang Studios. This site is not affiliated with Mojang or Microsoft.",
+                footer_gitee: "Gitee Repository",
+
+                ai_notice: "<strong>AI-translated</strong> version · Feedback welcome",
+                feedback_text: "Report translation issue"
+            },
+            "ru-RU": {
+                nav_download: "Скачать",
+                nav_features: "Возможности",
+                nav_online: "Онлайн",
+                nav_changelog: "Изменения",
+                nav_help: "Помощь",
+                nav_sponsor: "Поддержка",
+
+                hero_title: "MC <span class=\"accent\">Launcher</span>",
+                hero_desc: "Лёгкий, быстрый и безопасный лаунчер для Minecraft.<br>Несколько версий, запуск в один клик.",
+                download_btn: "Скачать бесплатно",
+                download_sub: "Windows 7 / 8 / 8.1 / 10 / 11",
+                gitee_repo: "Репозиторий Gitee",
+
+                features_title: "Возможности",
+                feature_1_title: "Поддержка версий",
+                feature_1_desc: "Поддержка EaglercraftX 1.8.8, 1.12.2 и других классических версий.",
+                feature_2_title: "Ускорение WASM",
+                feature_2_desc: "Встроенная оптимизация WASM для плавного геймплея и быстрой загрузки.",
+                feature_3_title: "Настройки",
+                feature_3_desc: "Широкие возможности настройки под ваш стиль.",
+                feature_4_title: "Безопасность",
+                feature_4_desc: "Проверка целостности файлов перед запуском.",
+                feature_5_title: "Портативность",
+                feature_5_desc: "Один файл, не требует установки, не изменяет реестр.",
+                feature_6_title: "Активная разработка",
+                feature_6_desc: "Регулярные обновления и новые функции.",
+
+                help_title: "📖 Нужна помощь?",
+                help_desc: "Откройте полное руководство и FAQ",
+                help_btn: "Центр помощи",
+
+                online_title: "🌍 Играть онлайн",
+                online_desc: "Никакой загрузки. Играйте в классический Minecraft прямо в браузере!<br>На базе Eaglercraft (1.8.8).",
+                online_btn: "Играть сейчас",
+                online_btn_sub: "Открыть 1.8.8 онлайн",
+
+                changelog_title: "История изменений",
+                date_6_0_0: "6 июля 2026",
+                log_6_0_0_1: "Добавлены 1.20 и 1.20 wasm",
+                log_6_0_0_2: "Исправлены известные ошибки",
+                date_5_6_0: "3 июля 2026",
+                log_5_6_0_1: "Добавлен мастер первоначальной настройки",
+                log_5_6_0_2: "Добавлена система локальных аккаунтов",
+                log_5_6_0_3: "Добавлен раздел «Поддержать нас»",
+                log_5_6_0_4: "Документация перенесена в онлайн-версию",
+                log_5_6_0_5: "Оптимизирована проверка ресурсов",
+                date_5_5_0: "30 июня 2026",
+                log_5_5_0_1: "Добавлена заставка при запуске",
+                log_5_5_0_2: "Добавлено контекстное меню",
+                log_5_5_0_3: "Добавлено переключение между версиями",
+                date_5_0_0: "Май 2026",
+                log_5_0_0_1: "Полный рефакторинг архитектуры",
+                log_5_0_0_2: "Переписано на нативном Win32 API",
+                log_5_0_0_3: "Двойная буферизация для плавного интерфейса",
+
+                sponsor_title: "❤️ Поддержите проект",
+                sponsor_desc: "Если лаунчер вам помог — поддержите развитие проекта!",
+                sponsor_btn: "Поддержать",
+
+                footer_copy: "MC Launcher &copy; 2024-2026 Huize Studio",
+                footer_partner: "Партнёр: Wenyi Studio",
+                footer_eagler: "Оригинал: (C) 2026 Eaglercraft.ir. Все права защищены.",
+                footer_disclaimer: "Minecraft — торговая марка Mojang Studios. Сайт не связан с Mojang или Microsoft.",
+                footer_gitee: "Репозиторий Gitee",
+
+                ai_notice: "<strong>Переведено ИИ</strong> · Сообщите об ошибках",
+                feedback_text: "Сообщить об ошибке перевода"
+            }
+        };
+
+        /* 自动检测语言（基于浏览器语言） */
+        function detectLanguage() {
+            const lang = navigator.language || navigator.userLanguage || "";
+
+            if (lang.startsWith("zh")) {
+                if (lang.includes("TW") || lang.includes("HK") || lang.includes("MO")) {
+                    return "zh-TW";
+                }
+                return "zh-CN";
+            }
+
+            if (lang.startsWith("en")) return "en-US";
+            if (lang.startsWith("ru")) return "ru-RU";
+
+            return "zh-CN";
+        }
+
+        /* 应用语言 */
+        function applyLang(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (i18n[lang] && i18n[lang][key]) {
+                    el.innerHTML = i18n[lang][key];
+                }
+            });
+
+            const aiNotice = document.getElementById("aiNotice");
+            const feedbackBtn = document.getElementById("feedbackBtn");
+            const feedbackLang = document.getElementById("feedbackLang");
+
+            if (lang === "zh-CN") {
+                aiNotice.style.display = "none";
+                feedbackBtn.style.display = "none";
+            } else {
+                aiNotice.style.display = "block";
+                feedbackBtn.style.display = "block";
+                feedbackLang.textContent = lang;
+            }
+
+            document.documentElement.lang = lang;
+        }
+
+        /* 生成 Gitee Issue 链接 */
+        function buildIssueUrl(lang) {
+            const repo = "Wanderlust-Code/project-pioneer";
+            const title = encodeURIComponent(`[翻译错误反馈] ${lang}`);
+            const body = encodeURIComponent(
+                `### 语言 / Language\n${lang}\n\n` +
+                `### 当前页面 / Page\n${location.href}\n\n` +
+                `### 问题描述 / Description\n<!-- 请填写翻译错误的具体位置 -->\n\n` +
+                `### 建议修正 / Suggested Correction\n<!-- 请填写正确的翻译 -->`
+            );
+            return `https://gitee.com/${repo}/issues/new?title=${title}&body=${body}`;
+        }
+
+        /* 初始化 */
+        const savedLang = localStorage.getItem('lang') || detectLanguage();
+        document.getElementById('langSelect').value = savedLang;
+        applyLang(savedLang);
+
+        document.getElementById('langSelect').addEventListener('change', e => {
+            const lang = e.target.value;
+            applyLang(lang);
+            localStorage.setItem('lang', lang);
+        });
+
+        document.getElementById('feedbackBtn').addEventListener('click', function () {
+            const lang = document.getElementById('langSelect').value;
+            this.href = buildIssueUrl(lang);
+        });
+    </script>
+
+</body>
+</html>
