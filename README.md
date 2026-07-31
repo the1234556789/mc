@@ -66,7 +66,7 @@ v121.0.0.3.1:无
 v121.0.0.3:无
 
 #### 常见问题（FAQ )
-不好意思，已经迁移到<a href="https://the1234556789.github.io/mc/help.html">前往查看</a>
+不好意思，已经迁移到<a href="https://github.com/the1234556789/mc/issues/2">前往查看</a>
 #### 新版本安装教程
 
 1.![输入图片说明](1/a47920ff-7b57-4915-a75c-71a0d8cb1d65.png)/n
