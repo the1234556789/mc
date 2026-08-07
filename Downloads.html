@@ -5,66 +5,65 @@
 <title>无法访问此页面</title>
 <style>
 *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Segoe UI",Roboto,Arial,sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Segoe UI,system-ui,-apple-system,sans-serif;
 }
-body {
-    background-color: #f8f8f8;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 130px;
+body{
+    background:#f8f8f8;
+    padding-top:120px;
 }
-.cloud-img {
-    width: 104px;
-    height: auto;
-    margin-bottom: 22px;
+.wrapper{
+    width:360px;
+    margin:0 auto;
 }
-h1 {
-    font-size: 27px;
-    font-weight: 500;
-    color: #202124;
+.cloud{
+    width:84px;
+    margin-bottom:24px;
+}
+h1{
+    font-size:24px;
+    font-weight:500;
+    color:#111;
+    margin-bottom:12px;
+}
+.domain-text{
+    font-size:15px;
     margin-bottom:14px;
+    color:#222;
 }
-.host-line {
-    font-size: 16px;
-    color:#202124;
-    margin-bottom:16px;
-}
-.tip-header {
-    font-size:16px;
+.tip-head{
+    font-size:15px;
     font-weight:600;
     margin-bottom:8px;
 }
-ul {
-    width: 340px;
-    margin-bottom:18px;
+ul{
+    padding-left:18px;
+    margin-bottom:16px;
 }
-li {
+li{
     font-size:15px;
-    margin:7px 0;
-    margin-left:20px;
+    margin:6px 0;
 }
-a {
-    color:#0066cc;
-    text-decoration: underline;
+a{
+    color:#0067c0;
+    text-decoration:underline;
 }
-.error-text {
+.err-code{
     font-size:14px;
-    color:#5f6368;
-    margin-bottom:30px;
+    color:#666;
+    margin-bottom:28px;
 }
-#refresh-btn {
-    background-color:#0078d7;
-    color:white;
+#refresh{
+    background:#0078d4;
+    color:#fff;
     border:none;
-    padding:9px 32px;
+    padding:8px 28px;
     font-size:15px;
     cursor:pointer;
 }
-.detail-row {
+.detail{
     margin-top:32px;
     font-size:15px;
     cursor:pointer;
@@ -72,25 +71,21 @@ a {
 </style>
 </head>
 <body>
-<!-- 使用你提供的云朵图片 -->
-<img class="cloud-img" src="cloud.png" alt="云朵图标">
-
+<div class="wrapper">
+<img class="cloud" src="cloud.png">
 <h1>嗯…无法访问此页面</h1>
-<div class="host-line">the1234556789.github.io/mc 已拒绝连接。</div>
-<div class="tip-header">请尝试：</div>
+<div class="domain-text">the1234556789.github.io/mc 已拒绝连接。</div>
+<div class="tip-head">请尝试：</div>
 <ul>
     <li>检查连接</li>
-    <li><a href="#">检查代理和防火墙</a></li>
+    <li><a>检查代理和防火墙</a></li>
 </ul>
-<div class="error-text">ERR_CONNECTION_REFUSED</div>
-<button id="refresh-btn">刷新</button>
-<div class="detail-row">⌄ 详细信息</div>
-
+<div class="err-code">ERR_CONNECTION_REFUSED</div>
+<button id="refresh">刷新</button>
+<div class="detail">⌄ 详细信息</div>
+</div>
 <script>
-// 点击刷新不会重载页面，持续显示报错
-document.getElementById("refresh-btn").onclick = function() {
-    return false;
-};
+document.querySelector("#refresh").onclick=()=>{}
 </script>
 </body>
 </html>
