@@ -1,145 +1,107 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8" />
-<title>MC 启动器 - 迁移至新官网</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<style>
-:root {
-  --primary: #4CAF50;
-  --bg: #f5f7fa;
-  --card: #ffffff;
-}
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  background: var(--bg);
-  color: #333;
-}
-header {
-  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-  padding: 56px 20px;
-  text-align: center;
-  color: #fff;
-}
-header h1 { margin: 0; font-size: 2.4rem; }
-header p { opacity: 0.95; margin-top: 10px; font-size: 1.1rem; }
-.container {
-  max-width: 880px;
-  margin: 32px auto;
-  padding: 0 16px;
-}
-.card {
-  background: var(--card);
-  border-radius: 12px;
-  padding: 28px;
-  margin-bottom: 24px;
-  box-shadow: 0 4px 12px rgba(0,0,0,.05);
-}
-.card h2 { margin-top: 0; color: #222; }
-.card p { line-height: 1.7; }
-.btn {
-  display: inline-block;
-  background: var(--primary);
-  color: #fff;
-  padding: 14px 28px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1rem;
-}
-.btn-alt {
-  background: #2196F3;
-}
-.note {
-  background: #fff8e1;
-  padding: 12px 16px;
-  border-radius: 6px;
-  font-size: 14px;
-  margin-bottom: 20px;
-}
-.warning {
-  background: #ffebee;
-  padding: 12px 16px;
-  border-radius: 6px;
-  font-size: 14px;
-  margin-bottom: 20px;
-  color: #b71c1c;
-}
-footer {
-  text-align: center;
-  padding: 24px;
-  font-size: 13px;
-  color: #777;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>无法访问此页面</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Roboto, Arial, sans-serif;
+        }
+        body {
+            background-color: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 90px;
+            color: #202124;
+        }
+        .error-icon {
+            width: 132px;
+            height: 132px;
+            margin-bottom: 28px;
+        }
+        h1 {
+            font-size: 30px;
+            font-weight: 500;
+            margin-bottom: 16px;
+        }
+        .host-text {
+            font-size: 17px;
+            margin-bottom: 24px;
+        }
+        .tip-head {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        ul {
+            width: 350px;
+            margin-bottom: 24px;
+        }
+        li {
+            font-size: 16px;
+            margin: 9px 0;
+            margin-left: 24px;
+        }
+        a {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .err-code {
+            color: #5f6368;
+            font-size: 15px;
+            margin-bottom: 32px;
+        }
+        #refreshBtn {
+            background: #1a73e8;
+            color: white;
+            border: none;
+            font-size: 15px;
+            padding: 11px 40px;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+        #refreshBtn:hover {
+            background-color: #1765cc;
+        }
+        .detail-toggle {
+            margin-top: 36px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
+<svg class="error-icon" viewBox="0 0 48 48" fill="none" stroke="#000" stroke-width="1.7">
+    <path d="M34 18a8 8 0 0 0-8-8H18a8 8 0 0 0-8 8 6 6 0 0 0 0 12h26a6 6 0 0 0 0-12z"/>
+    <circle cx="10" cy="34" r="2"/>
+    <circle cx="8" cy="38" r="1.6"/>
+</svg>
 
-<header>
-  <h1>MC 启动器</h1>
-  <p>官方网站已迁移至新地址</p>
-</header>
+<h1>嗯…无法访问此页面</h1>
+<div class="host-text">the1234556789.github.io/mc 已拒绝连接。</div>
+<div class="tip-head">请尝试：</div>
+<ul>
+    <li>检查连接</li>
+    <li><a href="#">检查代理和防火墙</a></li>
+</ul>
+<div class="err-code">ERR_CONNECTION_REFUSED</div>
+<button id="refreshBtn">刷新</button>
+<div class="detail-toggle">⌄ 详细信息</div>
 
-<div class="container">
-
-  <div class="note">
-    ⚡ 当前为 AI 翻译版本 · 如发现翻译错误，欢迎反馈
-  </div>
-
-  <div class="card">
-    <h2>🌐 新官网已上线</h2>
-    <p>
-      为提供更稳定的访问体验与更完整的功能支持，MC 启动器官方网站现已正式迁移至：
-    </p>
-    <p style="text-align:center; font-size:1.1rem; font-weight:600; margin:20px 0;">
-      👉 https://the1234556789.github.io/mc/
-    </p>
-    <p>
-      新官网包含下载中心、在线帮助、更新日志、赞助入口及在线版入口，
-      后续所有官方公告与版本发布将以新官网为准。
-    </p>
-    <div style="text-align:center; margin-top:24px;">
-      <a class="btn" href="https://the1234556789.github.io/mc/">进入新官网</a>
-      <a class="btn btn-alt" href="Downloads.html" style="margin-left:12px;">前往下载页</a>
-    </div>
-  </div>
-
-  <div class="card">
-    <h2>📥 下载说明</h2>
-    <p>
-      当前 <strong>v6.0.0</strong> 已正式发布，支持 1.20 / 1.20 WASM。
-      下载页面将随版本发布节奏动态调整，测试期间可能临时关闭。
-    </p>
-    <p>
-      如遇到下载缓慢或无法访问，请尝试开启代理工具
-      （如 Cloudflare WARP / Moon VPN / Jego）或使用手机网络访问。
-    </p>
-  </div>
-
-  <div class="warning">
-    ⚠️ <strong>重要提醒：</strong>旧下载地址将逐步停用，请尽快更新书签，
-    统一使用新官网地址。
-  </div>
-
-  <div class="card">
-    <h2>🔗 相关链接</h2>
-    <p>
-      • 新官网首页：<a href="https://the1234556789.github.io/mc/">https://the1234556789.github.io/mc/</a><br>
-      • 下载页面：<a href="Downloads.html">Downloads.html</a><br>
-      • Gitee 仓库：<a href="https://gitee.com/Wanderlust-Code/project-pioneer">Wanderlust-Code/project-pioneer</a><br>
-      • GitHub 仓库：<a href="https://github.com/the1234556789/mc">the1234556789/mc</a>
-    </p>
-  </div>
-
-</div>
-
-<footer>
-  MC 启动器 © 2024–2026 会泽工作室<br>
-  合作伙伴：文依工作室<br>
-  原作者：(C) 2026 Eaglercraft.ir. All rights reserved.<br>
-  Minecraft 是 Mojang Studios 的商标。本网站与 Mojang 或 Microsoft 无关。
-</footer>
-
+<script>
+// 修改：点击刷新不会真正重载页面，保持一直显示报错界面
+document.getElementById("refreshBtn").onclick = function(){
+    // 无任何刷新动作，持续停留在当前报错页面
+    return false;
+};
+</script>
 </body>
 </html>
