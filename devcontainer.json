@@ -1,0 +1,16 @@
+{
+  "name": "Windows10 QEMU",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "forwardPorts": [8080],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.docker"
+      ]
+    }
+  },
+  "postCreateCommand": "apt update && apt install -y qemu-kvm qemu-utils wget curl"
+}
