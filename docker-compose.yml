@@ -1,13 +1,107 @@
-version: "3"
-services:
-  win10:
-    image: dockurr/windows
-    container_name: win10
-    privileged: true
-    environment:
-      RAM: 4G
-      CPU: 2
-    ports:
-      - "8080:8080"
-    volumes:
-      - ./disk:/storage
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>无法访问此页面</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Roboto, Arial, sans-serif;
+        }
+        body {
+            background-color: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 90px;
+            color: #202124;
+        }
+        .error-icon {
+            width: 132px;
+            height: 132px;
+            margin-bottom: 28px;
+        }
+        h1 {
+            font-size: 30px;
+            font-weight: 500;
+            margin-bottom: 16px;
+        }
+        .host-text {
+            font-size: 17px;
+            margin-bottom: 24px;
+        }
+        .tip-head {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        ul {
+            width: 350px;
+            margin-bottom: 24px;
+        }
+        li {
+            font-size: 16px;
+            margin: 9px 0;
+            margin-left: 24px;
+        }
+        a {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .err-code {
+            color: #5f6368;
+            font-size: 15px;
+            margin-bottom: 32px;
+        }
+        #refreshBtn {
+            background: #1a73e8;
+            color: white;
+            border: none;
+            font-size: 15px;
+            padding: 11px 40px;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+        #refreshBtn:hover {
+            background-color: #1765cc;
+        }
+        .detail-toggle {
+            margin-top: 36px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<svg class="error-icon" viewBox="0 0 48 48" fill="none" stroke="#000" stroke-width="1.7">
+    <path d="M34 18a8 8 0 0 0-8-8H18a8 8 0 0 0-8 8 6 6 0 0 0 0 12h26a6 6 0 0 0 0-12z"/>
+    <circle cx="10" cy="34" r="2"/>
+    <circle cx="8" cy="38" r="1.6"/>
+</svg>
+
+<h1>嗯…无法访问此页面</h1>
+<div class="host-text">the1234556789.github.io/mc 已拒绝连接。</div>
+<div class="tip-head">请尝试：</div>
+<ul>
+    <li>检查连接</li>
+    <li><a href="#">检查代理和防火墙</a></li>
+</ul>
+<div class="err-code">ERR_CONNECTION_REFUSED</div>
+<button id="refreshBtn">刷新</button>
+<div class="detail-toggle">⌄ 详细信息</div>
+
+<script>
+// 修改：点击刷新不会真正重载页面，保持一直显示报错界面
+document.getElementById("refreshBtn").onclick = function(){
+    // 无任何刷新动作，持续停留在当前报错页面
+    return false;
+};
+</script>
+</body>
+</html>
