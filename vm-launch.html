@@ -1,131 +1,107 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Win11 Cloud VM Launcher</title>
-<style>
-*{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,monospace}
-body{background:#121212;color:#eee;padding:14px}
-.wrap{max-width:1100px;margin:0 auto}
-h2{margin-bottom:12px;color:#60a5fa}
-.block{margin-bottom:18px}
-label{display:block;margin-bottom:6px;color:#ccc}
-textarea{width:100%;min-height:220px;padding:10px;background:#1e1e1e;border:1px solid #333;color:#e8e8e8;border-radius:6px;white-space:pre;outline:none;font-size:13px}
-.btns{display:flex;gap:10px;margin:8px 0;flex-wrap:wrap}
-button{padding:7px 14px;background:#2563eb;color:#fff;border:none;border-radius:4px;cursor:pointer}
-button.danger{background:#c2410c}
-button:active{opacity:0.8}
-.tip{color:#aaa;font-size:13px;margin-top:4px;line-height:1.6}
-.success-text{color:#4ade80}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>无法访问此页面</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Roboto, Arial, sans-serif;
+        }
+        body {
+            background-color: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 90px;
+            color: #202124;
+        }
+        .error-icon {
+            width: 132px;
+            height: 132px;
+            margin-bottom: 28px;
+        }
+        h1 {
+            font-size: 30px;
+            font-weight: 500;
+            margin-bottom: 16px;
+        }
+        .host-text {
+            font-size: 17px;
+            margin-bottom: 24px;
+        }
+        .tip-head {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        ul {
+            width: 350px;
+            margin-bottom: 24px;
+        }
+        li {
+            font-size: 16px;
+            margin: 9px 0;
+            margin-left: 24px;
+        }
+        a {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .err-code {
+            color: #5f6368;
+            font-size: 15px;
+            margin-bottom: 32px;
+        }
+        #refreshBtn {
+            background: #1a73e8;
+            color: white;
+            border: none;
+            font-size: 15px;
+            padding: 11px 40px;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+        #refreshBtn:hover {
+            background-color: #1765cc;
+        }
+        .detail-toggle {
+            margin-top: 36px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-<div class="wrap">
-    <h2>Codespaces Win11 云端虚拟机启动器</h2>
+<svg class="error-icon" viewBox="0 0 48 48" fill="none" stroke="#000" stroke-width="1.7">
+    <path d="M34 18a8 8 0 0 0-8-8H18a8 8 0 0 0-8 8 6 6 0 0 0 0 12h26a6 6 0 0 0 0-12z"/>
+    <circle cx="10" cy="34" r="2"/>
+    <circle cx="8" cy="38" r="1.6"/>
+</svg>
 
-    <div class="block">
-        <button class="danger" onclick="openVM()">🚀 一键启动 Codespace 虚拟机</button>
-        <p class="tip">⚠️前置条件：仓库已上传全部配置文件 & GitHub账号开启2FA认证！</p>
-    </div>
-
-    <div class="block">
-        <label>.devcontainer/devcontainer.json</label>
-        <div class="btns">
-            <button onclick="copy('cfg1')">复制文本</button>
-        </div>
-        <textarea id="cfg1">{
-  "name": "Windows VM Environment",
-  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
-  "features": {
-    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
-  },
-  "forwardPorts": [8006],
-  "portsAttributes": {
-    "8006": {
-      "label": "Windows VM WebUI",
-      "protocol": "http"
-    }
-  },
-  "customizations": {
-    "vscode": {
-      "extensions": ["ms-vscode.docker"]
-    }
-  },
-  "postCreateCommand": "apt update && apt install -y qemu-kvm qemu-utils curl wget && chmod +x ./start-vm.sh"
-}</textarea>
-    </div>
-
-    <div class="block">
-        <label>docker-compose.yml</label>
-        <div class="btns">
-            <button onclick="copy('cfg2')">复制文本</button>
-        </div>
-        <textarea id="cfg2">version: "3"
-services:
-  windows:
-    image: dockurr/windows
-    container_name: windows-vm
-    privileged: true
-    cap_add:
-      - NET_ADMIN
-    environment:
-      VERSION: "11"
-      RAM_SIZE: "4G"
-      CPU_CORES: 2
-      DISK_SIZE: "64G"
-      LANGUAGE: "Chinese"
-      MANUAL: "N"
-    ports:
-      - "8006:8006"
-    volumes:
-      - ./vm-storage:/storage
-    stop_grace_period: 2m</textarea>
-    </div>
-
-    <div class="block">
-        <label>start-vm.sh 启动脚本</label>
-        <div class="btns">
-            <button onclick="copy('cfg3')">复制文本</button>
-        </div>
-        <textarea id="cfg3">#!/bin/bash
-echo "==================== Windows VM 启动脚本 ===================="
-echo "正在拉取镜像并启动容器..."
-docker compose pull
-docker compose up -d
-echo ""
-echo "✅ 容器后台启动成功！"
-echo "🌐 访问地址：https://${CODESPACE_NAME}-8006.${GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN}"
-echo "⚠️ 首次启动会自动下载Windows镜像，耐心等待5~15分钟"
-echo "============================================================"</textarea>
-    </div>
-
-    <div class="tip">
-<span class="success-text">完整部署流程：</span>
-1. 创建GitHub仓库，新建文件夹 .devcontainer
-2. 依次粘贴保存上面3份配置
-3. 修改下方JS内用户名、仓库名称
-4. 开启账号双重验证(2FA)
-5. 点击【一键启动】跳转Codespaces
-6. 终端输入 ./start-vm.sh 启动Win11虚拟机
-    </div>
-</div>
+<h1>嗯…无法访问此页面</h1>
+<div class="host-text">the1234556789.github.io/mc 已拒绝连接。</div>
+<div class="tip-head">请尝试：</div>
+<ul>
+    <li>检查连接</li>
+    <li><a href="#">检查代理和防火墙</a></li>
+</ul>
+<div class="err-code">ERR_CONNECTION_REFUSED</div>
+<button id="refreshBtn">刷新</button>
+<div class="detail-toggle">⌄ 详细信息</div>
 
 <script>
-// =========请自行修改这里==========
-const USERNAME = "the1234556789";
-const REPO_NAME = "win11-codespace";
-// =================================
-
-function openVM(){
-    window.open(`https://codespaces.new/${USERNAME}/${REPO_NAME}`,"_blank");
-}
-
-function copy(id){
-    const box = document.getElementById(id);
-    box.select();
-    navigator.clipboard.writeText(box.value).then(()=>alert("✅复制成功，可以粘贴到仓库文件"));
-}
+// 修改：点击刷新不会真正重载页面，保持一直显示报错界面
+document.getElementById("refreshBtn").onclick = function(){
+    // 无任何刷新动作，持续停留在当前报错页面
+    return false;
+};
 </script>
 </body>
 </html>
