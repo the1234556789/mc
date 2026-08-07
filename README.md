@@ -1,5 +1,11 @@
 # Minecraft AetherPioneer启动器
 
+# ⚠️项目永久停止维护【重要通知】
+本仓库仅作为历史存档保留，**不再进行任何更新、BUG修复、联机维护、技术答疑。**
+仓库内Eaglercraft相关资源版权归属原作者，Minecraft所有游戏资源版权归Mojang Studios与Microsoft所有。
+任何人员继续访问、使用本项目产生的全部风险，由使用者本人自行承担。
+如需体验Minecraft，请购买官方正版游戏。
+
 #### 在线版
 
 <a href="https://the1234556789.github.io/mc/1.8.8.html">1.8.8传统JS主路线</a>
