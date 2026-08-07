@@ -1,0 +1,13 @@
+version: "3"
+services:
+  win10:
+    image: dockurr/windows
+    container_name: win10
+    privileged: true
+    environment:
+      RAM: 4G
+      CPU: 2
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./disk:/storage
