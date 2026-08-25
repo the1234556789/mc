@@ -1,91 +1,147 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>无法访问此页面</title>
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Segoe UI,system-ui,-apple-system,sans-serif;
-}
-body{
-    background:#f8f8f8;
-    padding-top:120px;
-}
-.wrapper{
-    width:360px;
-    margin:0 auto;
-}
-.cloud{
-    width:84px;
-    margin-bottom:24px;
-}
-h1{
-    font-size:24px;
-    font-weight:500;
-    color:#111;
-    margin-bottom:12px;
-}
-.domain-text{
-    font-size:15px;
-    margin-bottom:14px;
-    color:#222;
-}
-.tip-head{
-    font-size:15px;
-    font-weight:600;
-    margin-bottom:8px;
-}
-ul{
-    padding-left:18px;
-    margin-bottom:16px;
-}
-li{
-    font-size:15px;
-    margin:6px 0;
-}
-a{
-    color:#0067c0;
-    text-decoration:underline;
-}
-.err-code{
-    font-size:14px;
-    color:#666;
-    margin-bottom:28px;
-}
-#refresh{
-    background:#0078d4;
-    color:#fff;
-    border:none;
-    padding:8px 28px;
-    font-size:15px;
-    cursor:pointer;
-}
-.detail{
-    margin-top:32px;
-    font-size:15px;
-    cursor:pointer;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorry, you have been blocked</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+        body{
+            background-color: #ffffff;
+            padding: 40px 24px;
+            color:#333333;
+            max-width:700px;
+            margin:0 auto;
+        }
+        h1{
+            font-size: 56px;
+            font-weight: 300;
+            line-height: 1.2;
+            margin-bottom:12px;
+        }
+        .sub‑title{
+            font-size:32px;
+            color:#555;
+            font-weight:300;
+            margin-bottom:40px;
+        }
+        .browser‑preview{
+            background:#eeeeee;
+            border-radius:12px 12px 0 0;
+            padding:16px;
+            margin-bottom:48px;
+        }
+        .browser‑top{
+            height:24px;
+            background:#999999;
+            border-radius:8px 8px 0 0;
+            display:flex;
+            gap:8px;
+            align-items:center;
+            padding:0 10px;
+        }
+        .dot{
+            width:12px;
+            height:12px;
+            border-radius:50%;
+            background:#ffffff;
+        }
+        .preview‑content{
+            background:#fff;
+            height:220px;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+        .red‑cross{
+            width:180px;
+            height:180px;
+            border-radius:50%;
+            background-color:#c82423;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+        .cross{
+            color:white;
+            font-size:120px;
+            font-weight:bold;
+        }
+        .two‑column{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap:30px;
+            margin-bottom:50px;
+        }
+        h2{
+            font-size:36px;
+            font-weight:300;
+            margin-bottom:20px;
+        }
+        p{
+            font-size:16px;
+            line-height:1.6;
+            color:#444;
+        }
+        .footer‑text{
+            font-size:14px;
+            color:#555;
+            text-align:center;
+            line-height:1.8;
+        }
+        #ipBtn{
+            border:none;
+            background:transparent;
+            color:#0056b3;
+            font-size:14px;
+            cursor:pointer;
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-<div class="wrapper">
-<img class="cloud" src="cloud.png">
-<h1>嗯…无法访问此页面</h1>
-<div class="domain-text">the1234556789.github.io/mc 已拒绝连接。</div>
-<div class="tip-head">请尝试：</div>
-<ul>
-    <li>检查连接</li>
-    <li><a>检查代理和防火墙</a></li>
-</ul>
-<div class="err-code">ERR_CONNECTION_REFUSED</div>
-<button id="refresh">刷新</button>
-<div class="detail">⌄ 详细信息</div>
-</div>
+    <h1>Sorry, you have been blocked</h1>
+    <div class="sub‑title">You are unable to access the1234556789.github.io/mc</div>
+
+    <div class="browser‑preview">
+        <div class="browser‑top">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+        <div class="preview‑content">
+            <div class="red‑cross">
+                <span class="cross">×</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="two‑column">
+        <div>
+            <h2>Why have I been blocked?</h2>
+            <p>This website is using a security service to protect itself from online attacks. The action you just performed triggered the security solution. There are several actions that could trigger this block including submitting a certain word or phrase, a SQL command or malformed data.</p>
+        </div>
+        <div>
+            <h2>What can I do to resolve this?</h2>
+            <p>You can email the site owner to let them know you were blocked. Please include what you were doing when this page came up and the Cloudflare Ray ID found at the bottom of this page.</p>
+        </div>
+    </div>
+
+    <div class="footer‑text">
+        Cloudflare Ray ID: a30a5adfa873c4e7 &nbsp;•&nbsp; Your IP: <button id="ipBtn">Click to reveal</button>
+        <br>
+        Performance & security by <a href="https://www.cloudflare.com/5xx-error-landing/" target="_blank">Cloudflare</a>
+    </div>
+
 <script>
-document.querySelector("#refresh").onclick=()=>{}
+document.getElementById("ipBtn").onclick = function(){
+    alert("你的IP地址已显示");
+}
 </script>
 </body>
 </html>
